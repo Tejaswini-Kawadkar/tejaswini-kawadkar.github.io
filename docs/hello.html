@@ -1,1 +1,419 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Portfolio</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      /* Base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        min-height: 100vh;
+        background: linear-gradient(to bottom, #111827, #1f2937);
+        color: #fff;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        width: 100%;
+        background-color: rgba(17, 24, 39, 0.8);
+        backdrop-filter: blur(8px);
+        z-index: 50;
+      }
+
+      .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        color: #9ca3af;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: #fff;
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 8rem 0 5rem;
+      }
+
+      .hero-content {
+        max-width: 48rem;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        color: #9ca3af;
+        margin-bottom: 2rem;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+
+      .button-primary {
+        background-color: #2563eb;
+        color: #fff;
+      }
+
+      .button-primary:hover {
+        background-color: #1d4ed8;
+      }
+
+      .button-secondary {
+        border: 1px solid #4b5563;
+        color: #9ca3af;
+      }
+
+      .button-secondary:hover {
+        border-color: #9ca3af;
+      }
+
+      /* Skills Section */
+      .skills {
+        padding: 5rem 0;
+        background-color: rgba(31, 41, 55, 0.5);
+      }
+
+      .section-title {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .skill-card {
+        background-color: #1f2937;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        transition: background-color 0.2s;
+      }
+
+      .skill-card:hover {
+        background-color: #374151;
+      }
+
+      .skill-icon {
+        color: #3b82f6;
+        margin-bottom: 1rem;
+      }
+
+      .skill-title {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .skill-desc {
+        color: #9ca3af;
+      }
+
+      /* Projects Section */
+      .projects {
+        padding: 5rem 0;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .project-card {
+        position: relative;
+        border-radius: 1rem;
+        overflow: hidden;
+      }
+
+      .project-image {
+        width: 100%;
+        height: 16rem;
+        object-fit: cover;
+      }
+
+      .project-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(17, 24, 39, 0.9), rgba(17, 24, 39, 0.5), transparent);
+        opacity: 0;
+        transition: opacity 0.3s;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.5rem;
+      }
+
+      .project-card:hover .project-overlay {
+        opacity: 1;
+      }
+
+      .project-title {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .project-desc {
+        color: #9ca3af;
+        margin-bottom: 1rem;
+      }
+
+      .project-link {
+        color: #60a5fa;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .project-link:hover {
+        color: #93c5fd;
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 5rem 0;
+        background-color: rgba(31, 41, 55, 0.5);
+      }
+
+      .contact-content {
+        max-width: 32rem;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .social-link {
+        color: #9ca3af;
+        transition: color 0.2s;
+      }
+
+      .social-link:hover {
+        color: #fff;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #111827;
+        padding: 2rem 0;
+        text-align: center;
+        color: #6b7280;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="container">
+        <div class="nav-content">
+          <a href="#" class="logo">Portfolio</a>
+          <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Building Digital Experiences That Matter</h1>
+          <p>Full-stack developer crafting beautiful and functional web applications with modern technologies and best practices.</p>
+          <div class="button-group">
+            <a href="#contact" class="button button-primary">Get in Touch</a>
+            <a href="#projects" class="button button-secondary">View Projects</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+      <div class="container">
+        <h2 class="section-title">What I Do</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i data-lucide="code-2"></i>
+            </div>
+            <h3 class="skill-title">Web Development</h3>
+            <p class="skill-desc">Building responsive and performant web applications</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i data-lucide="palette"></i>
+            </div>
+            <h3 class="skill-title">UI/UX Design</h3>
+            <p class="skill-desc">Creating intuitive and beautiful user interfaces</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i data-lucide="globe"></i>
+            </div>
+            <h3 class="skill-title">API Integration</h3>
+            <p class="skill-desc">Connecting applications with third-party services</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i data-lucide="rocket"></i>
+            </div>
+            <h3 class="skill-title">Performance</h3>
+            <p class="skill-desc">Optimizing for speed and efficiency</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=800" 
+                 alt="E-Commerce Platform" 
+                 class="project-image">
+            <div class="project-overlay">
+              <h3 class="project-title">E-Commerce Platform</h3>
+              <p class="project-desc">A full-featured online store with cart and payment integration</p>
+              <a href="#" class="project-link">
+                View Project
+                <i data-lucide="external-link"></i>
+              </a>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800" 
+                 alt="Task Management App" 
+                 class="project-image">
+            <div class="project-overlay">
+              <h3 class="project-title">Task Management App</h3>
+              <p class="project-desc">Collaborative project management tool with real-time updates</p>
+              <a href="#" class="project-link">
+                View Project
+                <i data-lucide="external-link"></i>
+              </a>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" 
+                 alt="Portfolio Website" 
+                 class="project-image">
+            <div class="project-overlay">
+              <h3 class="project-title">Portfolio Website</h3>
+              <p class="project-desc">Modern portfolio showcasing creative work and projects</p>
+              <a href="#" class="project-link">
+                View Project
+                <i data-lucide="external-link"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="contact-content">
+          <h2 class="section-title">Let's Work Together</h2>
+          <p>I'm always interested in hearing about new projects and opportunities.</p>
+          <div class="social-links">
+            <a href="https://github.com" class="social-link">
+              <i data-lucide="github"></i>
+            </a>
+            <a href="https://linkedin.com" class="social-link">
+              <i data-lucide="linkedin"></i>
+            </a>
+            <a href="mailto:contact@example.com" class="social-link">
+              <i data-lucide="mail"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>© 2025 Your Name. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
