@@ -1,0 +1,167 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4169E1;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#E6E6FA;stop-opacity:0.8" />
+    </linearGradient>
+    <linearGradient id="dataGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:0.8" />
+      <stop offset="33%" style="stop-color:#4ECDC4;stop-opacity:0.8" />
+      <stop offset="66%" style="stop-color:#45B7D1;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#96CEB4;stop-opacity:0.8" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#skyGradient)"/>
+
+  <!-- Streaming devices on the left -->
+  <!-- Smartphone -->
+  <rect x="50" y="80" width="25" height="40" rx="4" fill="#2C3E50" stroke="#34495E" stroke-width="2"/>
+  <rect x="54" y="88" width="17" height="24" fill="#3498DB" rx="2"/>
+  <circle cx="62.5" cy="123" r="2" fill="#34495E"/>
+  
+  <!-- Laptop -->
+  <ellipse cx="62.5" cy="160" rx="20" ry="12" fill="#2C3E50"/>
+  <rect x="42.5" y="148" width="40" height="24" rx="2" fill="#34495E"/>
+  <rect x="46.5" y="152" width="32" height="18" fill="#3498DB" rx="1"/>
+  
+  <!-- Camera -->
+  <rect x="50" y="220" width="25" height="18" rx="3" fill="#E74C3C"/>
+  <circle cx="70" cy="229" r="6" fill="#2C3E50"/>
+  <circle cx="70" cy="229" r="3" fill="#3498DB"/>
+  
+  <!-- Data streams flowing right -->
+  <g id="dataStream1">
+    <path d="M 85 100 Q 200 95 320 120" stroke="url(#dataGradient)" stroke-width="4" fill="none" opacity="0.7">
+      <animate attributeName="stroke-dasharray" values="0,100;20,80;0,100" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <!-- Data particles -->
+    <circle cx="120" cy="98" r="2" fill="#FF6B6B">
+      <animate attributeName="cx" values="85;320" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="100" cy="97" r="1.5" fill="#4ECDC4">
+      <animate attributeName="cx" values="85;320" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <g id="dataStream2">
+    <path d="M 85 170 Q 200 165 320 160" stroke="url(#dataGradient)" stroke-width="4" fill="none" opacity="0.7">
+      <animate attributeName="stroke-dasharray" values="20,80;0,100;20,80" dur="2.5s" repeatCount="indefinite"/>
+    </path>
+    <circle cx="140" cy="167" r="2" fill="#45B7D1">
+      <animate attributeName="cx" values="85;320" dur="2.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <g id="dataStream3">
+    <path d="M 85 235 Q 200 240 320 200" stroke="url(#dataGradient)" stroke-width="4" fill="none" opacity="0.7">
+      <animate attributeName="stroke-dasharray" values="0,100;20,80;0,100" dur="2.8s" repeatCount="indefinite"/>
+    </path>
+    <circle cx="160" cy="238" r="2" fill="#96CEB4">
+      <animate attributeName="cx" values="85;320" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Cloud infrastructure in center -->
+  <g id="cloudCluster">
+    <!-- Main cloud -->
+    <ellipse cx="400" cy="150" rx="60" ry="35" fill="url(#cloudGradient)" filter="url(#glow)"/>
+    <ellipse cx="380" cy="150" rx="40" ry="25" fill="url(#cloudGradient)"/>
+    <ellipse cx="420" cy="150" rx="40" ry="25" fill="url(#cloudGradient)"/>
+    
+    <!-- Smaller supporting clouds -->
+    <ellipse cx="350" cy="120" rx="25" ry="15" fill="url(#cloudGradient)" opacity="0.8"/>
+    <ellipse cx="450" cy="180" rx="30" ry="18" fill="url(#cloudGradient)" opacity="0.8"/>
+    
+    <!-- Cloud icons/symbols -->
+    <circle cx="385" cy="140" r="3" fill="#3498DB" opacity="0.6"/>
+    <circle cx="400" cy="150" r="4" fill="#E74C3C" opacity="0.6"/>
+    <circle cx="415" cy="160" r="3" fill="#F39C12" opacity="0.6"/>
+    
+    <!-- Processing indicator -->
+    <g transform="translate(400,150)">
+      <circle r="20" fill="none" stroke="#3498DB" stroke-width="2" opacity="0.3">
+        <animate attributeName="r" values="15;25;15" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+
+  <!-- Analytics dashboards on the right -->
+  <g id="dashboards">
+    <!-- Dashboard 1 - Chart -->
+    <rect x="550" y="80" width="80" height="60" rx="6" fill="#FFFFFF" stroke="#BDC3C7" stroke-width="2"/>
+    <rect x="555" y="85" width="70" height="8" fill="#3498DB" rx="2"/>
+    <!-- Bar chart -->
+    <rect x="560" y="105" width="8" height="20" fill="#E74C3C"/>
+    <rect x="572" y="110" width="8" height="15" fill="#F39C12"/>
+    <rect x="584" y="100" width="8" height="25" fill="#27AE60"/>
+    <rect x="596" y="108" width="8" height="17" fill="#9B59B6"/>
+    <rect x="608" y="115" width="8" height="10" fill="#E67E22"/>
+    
+    <!-- Dashboard 2 - Pie chart -->
+    <rect x="660" y="80" width="80" height="60" rx="6" fill="#FFFFFF" stroke="#BDC3C7" stroke-width="2"/>
+    <rect x="665" y="85" width="70" height="8" fill="#3498DB" rx="2"/>
+    <circle cx="700" cy="115" r="15" fill="none" stroke="#E74C3C" stroke-width="4" stroke-dasharray="20,20"/>
+    <circle cx="700" cy="115" r="15" fill="none" stroke="#27AE60" stroke-width="4" stroke-dasharray="15,35" transform="rotate(90 700 115)"/>
+    <circle cx="700" cy="115" r="15" fill="none" stroke="#F39C12" stroke-width="4" stroke-dasharray="10,40" transform="rotate(180 700 115)"/>
+    
+    <!-- Dashboard 3 - Line graph -->
+    <rect x="550" y="200" width="80" height="60" rx="6" fill="#FFFFFF" stroke="#BDC3C7" stroke-width="2"/>
+    <rect x="555" y="205" width="70" height="8" fill="#3498DB" rx="2"/>
+    <path d="M 560 240 L 570 230 L 580 235 L 590 225 L 600 230 L 610 220 L 620 225" 
+          stroke="#E74C3C" stroke-width="2" fill="none"/>
+    
+    <!-- Dashboard 4 - Metrics -->
+    <rect x="660" y="200" width="80" height="60" rx="6" fill="#FFFFFF" stroke="#BDC3C7" stroke-width="2"/>
+    <rect x="665" y="205" width="70" height="8" fill="#3498DB" rx="2"/>
+    <circle cx="680" cy="230" r="8" fill="#27AE60"/>
+    <text x="680" y="235" text-anchor="middle" font-family="Arial" font-size="10" fill="white" font-weight="bold">98%</text>
+    <circle cx="720" cy="230" r="8" fill="#E74C3C"/>
+    <text x="720" y="235" text-anchor="middle" font-family="Arial" font-size="8" fill="white" font-weight="bold">2.1s</text>
+  </g>
+
+  <!-- Data flow from cloud to dashboards -->
+  <path d="M 460 150 Q 500 140 550 120" stroke="#3498DB" stroke-width="3" fill="none" opacity="0.6" stroke-dasharray="5,5">
+    <animate attributeName="stroke-dasharray" values="5,5;10,0;5,5" dur="1.5s" repeatCount="indefinite"/>
+  </path>
+  
+  <path d="M 460 150 Q 500 145 550 230" stroke="#3498DB" stroke-width="3" fill="none" opacity="0.6" stroke-dasharray="5,5">
+    <animate attributeName="stroke-dasharray" values="10,0;5,5;10,0" dur="1.8s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Labels -->
+  <text x="60" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">
+    Media Sources
+  </text>
+  
+  <text x="400" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">
+    Cloud Processing
+  </text>
+  
+  <text x="650" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">
+    Analytics Dashboard
+  </text>
+
+  <!-- Title -->
+  <text x="400" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">
+    Streaming Media Analytics Platform
+  </text>
+
+  <!-- Subtle background elements -->
+  <circle cx="150" cy="300" r="30" fill="#FFFFFF" opacity="0.1"/>
+  <circle cx="650" cy="320" r="25" fill="#FFFFFF" opacity="0.1"/>
+  <circle cx="300" cy="50" r="20" fill="#FFFFFF" opacity="0.15"/>
+</svg>
