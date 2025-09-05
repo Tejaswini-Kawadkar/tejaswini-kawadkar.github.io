@@ -1,4 +1,4 @@
-<!Doctype html>
+<!DOCTYPE HTML>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -351,4 +351,5 @@
       lucide.createIcons();
     </script>
   </body>
+
 </html>
