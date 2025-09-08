@@ -18,6 +18,32 @@
     padding: 0 1.5rem;
   }
 
+  .hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(17, 24, 39, 0.95);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+  .nav-links.show {
+    display: flex;
+  }
+  .hamburger {
+    display: block;
+  }
+}
+
   /* Navigation */
   nav {
     position: fixed;
@@ -59,6 +85,18 @@
   }
 
   /* Hero Section */
+  @media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero h2 {
+    font-size: 1.2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
   .hero {
     padding: 8rem 0 5rem;
   }
@@ -349,10 +387,11 @@
 
 /* Certificate Section */
   .p-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Creates 4 equal columns */
-    gap: 1.5rem; /* Adds spacing between certificates */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
 }
+
 
 .p-card {
     position: relative;
@@ -404,13 +443,12 @@
   background-color: #111827; /* Dark background for contrast */
 }
 
-.pro-image {
+.pro-image, .p-image {
   width: 100%;
-  height: 22rem;
-  /* object-fit: cover; */
-  display: block;
-  transition: transform 0.5s ease;
+  height: auto;
+  object-fit: contain;
 }
+
 
 .pro-card:hover .pro-image {
   transform: scale(1.05);
