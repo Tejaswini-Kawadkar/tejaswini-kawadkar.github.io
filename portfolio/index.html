@@ -6,16 +6,10 @@
     <title>My Portfolio</title>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel='stylesheet' href='p_styles.css'>
-    <script> 
-      function toggleMenu() {
-        document.querySelector(".nav-links").classList.toggle("show");
-      }
-    </script>
   </head>
   <body>
     <!-- Navigation -->
     <nav>
-      <div class="hamburger" onclick="toggleMenu()">
       <div class="container">
         <div class="nav-content">
           <a href="#" class="logo">Portfolio</a>
@@ -27,7 +21,6 @@
             <a href="#contact">Contact</a>
           </div>
         </div>
-      </div>
       </div>
     </nav>
 
@@ -57,6 +50,30 @@
           </p>
       </div>
     </section>
+
+    <!-- About Section -->
+<!-- <section id="about" class="about creative-about">
+  <div class="container about-flex">
+    <div class="about-left">
+      <h1 class="section-title">Tejaswini in a Nutshell</h1>
+      <p>I’m a <strong>Computer Science student</strong> with a deep curiosity and a knack for solving problems.</p>
+      <p>I believe that <strong>technology and creativity</strong> can go hand-in-hand to shape the future.</p>
+      <p><em>Code is my language,</em><br>
+         <em>Data is my canvas,</em><br>
+         <strong>Efficiency is my art.</strong></p>
+      <p>
+        From building ISL gesture recognition systems to designing AI models for detecting citrus plant diseases,
+        my projects are driven by a simple goal — <strong>to make meaningful impact through tech.</strong>
+      </p>
+      <p>When I’m not coding, I enjoy crafting recipes or learning foreign languages — finding patterns in both plates and syntax.</p>
+    </div>
+
+    <div class="about-right">
+      <img src="/mnt/data/757f8a88-4aa2-43d3-8c2f-824ef26da4bf.png" alt="Word Art Figure" class="about-image" />
+    </div>
+  </div>
+</section> -->
+
 
     <!-- Skills Section -->
     <section id="skills" class="skills">
@@ -100,6 +117,20 @@
       <div class="container">
         <h2 class="section-title">Featured Projects</h2>
         <div class="pro-grid">
+          <!-- <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=800" 
+                 alt="E-Commerce Platform" 
+                 class="project-image">
+            <div class="project-overlay">
+              <h3 class="project-title">Indian Sign language </h3>
+              <p class="project-desc">A two-way communication system </p>
+              <a href="#" class="project-link">
+                View Project
+                <i data-lucide="external-link"></i>
+              </a>
+            </div>
+          </div> -->
+          <!-- Project 1 -->
           <div class="pro-card">
             <img src="https://raw.githubusercontent.com/Tejaswini-Kawadkar/tejaswini-kawadkar.github.io/refs/heads/first/images/Boli.jpeg" 
                  alt="Portfolio Website" 
@@ -174,6 +205,7 @@
             <div class="pro-info">
               <h3 class="pro-title"> Customer Analytics Dashboard using Power BI </h3>
               <p class="pro-desc"> 
+                <!-- Developed a Power BI dashboard to analyse customer feedback, perform NPS calculation, and visualize satisfaction insights for better decision-making. -->
                 This Power BI dashboard provides deep insights into hotel customer feedback, helping management improve services, enhance customer satisfaction, and identify key areas of improvement.
               </p>
               <a href="https://github.com/Tejaswini-Kawadkar/Customer_Analytics_Dashboard" target="_blank" class="pro-link">
